@@ -1,0 +1,302 @@
+/* CSS Reset */
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img{
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: inline-block;
+    object-fit: cover;
+}
+
+
+/* Variables*/
+
+@font-face {
+    font-family: regular;
+    src: url(../assets/fonts/static/DMSans-Regular.ttf);
+}
+
+@font-face {
+    font-family: medium;
+    src: url(../assets/fonts/static/DMSans-Medium.ttf);
+}
+
+@font-face {
+    font-family:mediumItalic;
+    src: url(../assets/fonts/static/DMSans-MediumItalic.ttf);
+}
+
+:root{
+    --bg-color: #F6F6F6;
+    --white-color: hsl(0, 0%, 100%);
+    --black-color:hsl(0, 0%, 7%) ;
+    --purple-primary-color:hsl(256, 67%, 59%) ;
+    --purple-secondary-color:hsl(254, 88%, 90%) ;
+    --yelllow-primary-color:hsl(39, 100%, 71%) ;
+    --yelllow-secondary-color: hsl(31, 66%, 93%);
+    --pink-light-color: #F9EEE2;
+    --font-size-standard: 18px;
+    --max-layout: 1440px;
+    --min-layout: 375px;
+    --font-size-l: 1.875rem;
+    --font-size-xl: 3.125rem;
+    --border-radius: .5rem;
+}
+
+/* ----------------- */
+
+h2 {
+    font-family: medium;
+    font-size: var(--font-size-l);
+    font-weight: 500;
+}
+
+p {
+    font-family: regular;
+}
+
+a {
+    text-decoration: none;
+    color: var(--purple-secondary-color);
+}
+
+.card {
+    padding: 1em;
+    border-radius: var(--border-radius);
+    display: flex;
+    min-height: 260px;
+}
+
+
+.card__text {
+    font-family: regular;
+    font-size: var(--font-size-standard);
+}
+
+
+.section {
+
+    padding: 1em;
+    background-color: var(--bg-color);
+
+    & .section__grid {
+        max-width: var(--max-layout);
+        margin: auto;
+        display: grid; 
+        grid-template-areas: 
+            "card1 card2 card2 card3"
+            "card1 card5 card6 card3"
+            "card1 card5 card6 card3"
+            "card4 card5 card6 card3"
+            "card4 card7 card8 card8"
+            "card4 card7 card8 card8";
+        gap: 1.25em;
+        padding: 1em;
+
+        @media (min-width:481px) and  (max-width: 768px) {
+            grid-template-areas: 
+            "card4 card2 card2 "
+            "card4 card5 card6 "
+            "card4 card5 card6 "
+            "card7 card5 card6 "
+            "card7 card8 card8 "
+            "card7 card8 card8 "
+            "card3 card3 card1";
+        }
+
+
+        @media (max-width: 480px) {
+            grid-template-areas: 
+            "card2"
+            "card5"
+            "card6"
+            "card3"
+            "card8"
+            "card7"
+            "card1"
+            "card4";
+        }
+
+
+
+        & .card__post {
+            background-color: var(--pink-light-color);
+            font-weight: 500;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 1em;
+            font-family: medium;
+            grid-area: card1;
+    
+            & .card__title span {
+                font-family: mediumItalic;
+                color: var(--purple-primary-color);
+            }
+        }
+
+        
+        & .card__social {
+            background-color: var(--purple-primary-color);
+            font-size:var(--font-size-xl);
+            text-align: center;
+            font-family: medium;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--white-color);
+            grid-area: card2;
+
+            & h2 span {
+                color: var(--yelllow-primary-color);
+            }
+
+            & .card__rating {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+
+            }
+
+        }
+
+
+        & .card__schedule {
+            background-color: var(--purple-secondary-color);
+            flex-direction: column;
+            justify-content: space-between;;
+            gap: 1.5em;
+            font-family: medium;
+            overflow: hidden;
+            position: relative;
+            grid-area: card3;
+            
+                & img {
+                    position: absolute;
+                    object-fit: cover;
+                    object-position: left;
+                    top: 25%;
+                }
+
+                @media (min-width:320px) and (max-width:1280px) {
+          
+                    overflow: visible;
+                    & img {
+                            position: static;
+                        }
+                }
+
+                @media (max-width: 480px) {
+                        & img {
+                            position: static;
+                        }
+                }
+        }
+
+        & .card__ai {
+            background-color: var(--yelllow-primary-color);
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 2em;
+            grid-area: card4;
+        }
+
+        & .card__accounts {
+            flex-direction: column;
+            justify-content: space-evenly;
+            background-color: var(--white-color);
+            grid-area: card5;
+
+        }
+
+          & .card__posting {
+            flex-direction: column;
+            justify-content: space-evenly;
+            background-color: var(--yelllow-primary-color);
+            overflow: hidden;
+            grid-area: card6;
+
+
+            & .card__img {
+                padding: 1em;
+                position: relative;
+                & img {
+                    position: absolute;
+                    object-position: bottom;
+                    bottom: -120px;
+                    left: 0;
+                    right: 0;
+                }  
+            }
+
+            @media (min-width:320px) and (max-width:1280px) {
+                overflow: visible;
+                & .card__img {
+                    position: static;
+                    & img {
+                        position: static;
+                    }
+                }
+            }
+
+            @media (max-width: 320px) {
+                & .card__img {
+                    position: static;
+                    & img {
+                        position: static;
+                    }
+                }
+            }
+
+        }
+
+        & .card__audience {
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: var(--white-color);
+            grid-area: card7;
+
+            & .card__title {
+                font-size: var(--font-size-xl);
+            }
+        }
+
+        & .card__grow {
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--purple-primary-color);
+            color: var(--white-color);
+            grid-area: card8;
+
+            @media (max-width: 480px) {
+                flex-direction: column;
+            }
+        }
+
+
+    }
+}
+
+
+.footer {
+    background-color: #242424;
+    color: var(--white-color);
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+
+    & .attribution {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+    }
+}
